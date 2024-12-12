@@ -34,11 +34,16 @@
   
   .NotAvailableStatus {
     font-size: 14px;
-    color: lightsalmon;
+    color: yellow;
   }
   
   .AvailableStatus {
     font-size: 14px;
     color: lightgreen;
+  }
+
+  .descriptionItem{
+    font-size: 12px;
+    // font-style: italic;
   }
   

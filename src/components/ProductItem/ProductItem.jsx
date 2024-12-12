@@ -4,7 +4,7 @@ import { useState } from 'react';
 import React from 'react'
 
 function ProductItem({product}) {
-  const [isFavorite, setIsFavorite] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
   return (
     <div>
         <article className='Container' style={{backgroundColor:'slategray'}}>
