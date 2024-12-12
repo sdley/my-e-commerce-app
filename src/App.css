@@ -1,5 +1,29 @@
+/* *{ */
+  /* box-sizing: border-box; */
+/* } */
+
+ body{
+  
+  background-color: #282C35;
+  color: white;
+  margin: 10px auto;
+}
+
+
+.product-container{
+  margin: 30px auto;
+  display: flex;
+  gap: 3%;
+  /* background-color: red; */
+} 
+
 .App {
+  /* background-color: #282C35;
+  color: white; */
   text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 16px 16px;
 }
 
 .App-logo {
