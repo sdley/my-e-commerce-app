@@ -15,7 +15,29 @@ export default function Item({product}) {
       setIsVisible(!isVisible); 
     }
 
-    
+    // Etat du stock initial
+    const [stock, setStock] = useState(product.stockCount);
+    // gestion d'achats
+    const handleBuy = () => {
+      if (stock){
+        // stock est disponible
+        // decremente le stock de 1
+        setStock(stock - 1);
+        // console.log(stock - 1);
+
+      } 
+      // else{
+      //   console.log('Stock epuise !')
+      // }
+    }
+
+    // Achat par 2
+    const handleBuy2 = () => {
+      if (stock){
+        setStock(stock - 2);
+        console.log(stock - 2);
+      }
+    }
 
   return (
         <article className='Container'>
@@ -48,19 +70,21 @@ export default function Item({product}) {
                   }
                 </p>
           
-                <Status stockCount = {product.stockCount} />
+                <Status stockCount = {stock} />
                 {
-                  product.stockCount > 0 && (
+                  stock > 0 && (
                     <>
                       <p>Price: ${ product.price }</p>
                       <button
-                        // onClick={handleBuy}
+                        onClick={handleBuy}
                       >Buy</button>
                     </>
                   )
                 }
-                { product.stockCount > 1 && (
-                  <button>Buy 2</button>
+                { stock > 1 && (
+                  <button
+                    onClick={handleBuy2}
+                  >Buy 2</button>
                 )}
     </article>
   );

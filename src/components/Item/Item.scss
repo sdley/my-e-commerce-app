@@ -20,9 +20,8 @@
     font-size: 20px;
   
     &:hover {
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
+      transform: scale(1.5);
+      transition: transform 0.5s ease;
     }
   }
   
