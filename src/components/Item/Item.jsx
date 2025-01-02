@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Item.scss';
 
-export default function Item({product}) {
+export default function Item({product, onFavorite, favorite}) {
     const imgSize = 128;
-    const [isFavorite, setIsFavorite] = useState(false);
+    // const [isFavorite, setIsFavorite] = useState(false);
 
     
     // declaration d'un etat pour la gestion du clic pour la description
@@ -43,9 +43,9 @@ export default function Item({product}) {
         <article className='Container'>
                 <button
                   className='Favorite'
-                  onClick={() => setIsFavorite(!isFavorite)}
+                  onClick={() => onFavorite(product.id)}
                   >
-                  {isFavorite ? '❤️' : '🤍'}
+                  {favorite ? '❤️' : '🤍'}
                 </button>
                 <h2>{product.title}</h2>
                 <img
