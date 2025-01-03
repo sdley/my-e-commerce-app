@@ -31,14 +31,6 @@ export default function Item({product, onFavorite, favorite}) {
       // }
     }
 
-    // Achat par 2
-    const handleBuy2 = () => {
-      if (stock){
-        setStock(stock - 2);
-        console.log(stock - 2);
-      }
-    }
-
   return (
         <article className='Container'>
                 <button
@@ -47,16 +39,21 @@ export default function Item({product, onFavorite, favorite}) {
                   >
                   {favorite ? '❤️' : '🤍'}
                 </button>
-                <h2>{product.title}</h2>
-                <img
-                  src={product.imageSrc}
-                  alt={product.title}
-                  width={imgSize}
-                  height={imgSize}
-                />
-                <p>
+                <h2 
+                  className='text-2xl font-bold m-4'
+                  >{product.title}</h2>
+                <p className='flex items-center justify-center'>
+                  <img 
+                    src={product.imageSrc}
+                    alt={product.title}
+                    width={imgSize}
+                    height={imgSize}
+                  />
+                </p>
+                <p className='text-lg m-4'>
                   Specification:{" "}
-                  <button
+                  <button 
+                    className='btn btn-xs bg-white text-black border-0'
                     onClick={handleClic}
                   >
                     { isVisible ? 'hide' : 'show'}
@@ -74,18 +71,14 @@ export default function Item({product, onFavorite, favorite}) {
                 {
                   stock > 0 && (
                     <>
-                      <p>Price: ${ product.price }</p>
+                      <p className='m-4'>Price: ${ product.price }</p>
                       <button
+                        className='btn btn-xs bg-white text-black border-0'
                         onClick={handleBuy}
-                      >Buy</button>
+                      >Acheter</button>
                     </>
                   )
                 }
-                { stock > 1 && (
-                  <button
-                    onClick={handleBuy2}
-                  >Buy 2</button>
-                )}
     </article>
   );
 }
