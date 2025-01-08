@@ -39,12 +39,34 @@ const Home = () => {
   const [maxPrice, setMaxPrice] = useState(0);
   const handleMinPrice = (e) => {
     setMinPrice(e.target.value);
+    // console.log(minPrice);
   }
   const handleMaxPrice = (e) => {
     setMaxPrice(e.target.value);
+    // console.log(maxPrice);
   }
-  const filteredProducts = products.filter(prod => prod.price >= minPrice && prod.price <= maxPrice);
-  // console.log(filteredProducts);
+
+  // sort products by name or price
+  const [sortBy, setSortBy] = useState('name');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const handleSort = (sortBy) => {
+    setSortBy(sortBy);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+
+  // filteres products
+  // const filteredProducts = products.filter(prod => prod.price >= minPrice && prod.price <= maxPrice);
+  const filteredProducts = products.filter(prod => prod.price >= minPrice && prod.price <= maxPrice).sort((a,
+     b) => {
+    if (sortBy === 'name') {
+      return sortOrder === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
+    } else {
+      return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+    }
+  });
+  
+  
   
   return (
     <div className='flex-1 pt-20 pb-8 px-6'>
@@ -65,6 +87,15 @@ const Home = () => {
 
       <List>
         {
+          filteredProducts.length ? filteredProducts.slice(0,3).map(prod => ( 
+            <Item 
+              className="product-card"
+              key={prod.id} 
+              product = {prod} 
+              favorite={favorites.includes(prod.id)}
+              onFavorite={handleFavorite}
+            />
+          )) :
           // Afficher uniquement 3 produits sur la page d'accueil
           products.slice(0,3).map(prod => (
             <Item 
@@ -81,19 +112,47 @@ const Home = () => {
         className='text-2xl font-bold text-left m-4'
         >Products filtered by price</h2>
       <div
-        className='text-left'
-        > Price (min-max): $ 
-        <input
-          type='number'
-          min={0} 
-          value={minPrice} onChange={handleMinPrice}
-          className="input input-bordered input-xs max-w-xs bg-white text-black" />&nbsp;
-        - $
-        <input
-          type='number' 
-          max={10000}
-          value={maxPrice} onChange={handleMaxPrice}
-          className="input input-bordered input-xs max-w-xs bg-white text-black" />
+        className='text-left flex m-2'
+        >
+        <div>
+          Price (min-max): $ 
+          <input
+            type='number'
+            min={0} 
+            value={minPrice} onChange={handleMinPrice}
+            className="input input-bordered input-xs max-w-xs bg-white text-black" />&nbsp;
+            - $
+          <input
+            type='number' 
+            max={10000}
+            value={maxPrice} onChange={handleMaxPrice}
+            className="input input-bordered input-xs max-w-xs bg-white text-black" />
+        </div>
+        {/* <div className='ml-4'>
+          Short By: &nbsp;
+          <button
+            className='btn btn-xs bg-white text-black border-0'
+            onClick={() => setProducts([...products.sort((a, b) => a.title.localeCompare(b.title))])}
+          >Name</button>
+          <button
+            className='btn btn-xs bg-white text-black border-0 ml-2'
+          >Price</button>
+        </div> */}
+        <div className='ml-4'>
+          Sort By: &nbsp;
+          <button
+            className={`btn btn-xs bg-white text-black border-0 ${sortBy === 'name' ? 'font-bold' : ''}`}
+            onClick={() => handleSort('name')}
+          >
+            Name {sortBy === 'name' && sortOrder === 'asc' ? '▲' : '▼'}
+          </button>
+          <button
+            className={`btn btn-xs bg-white text-black border-0 ml-2 ${sortBy === 'price' ? 'font-bold' : ''}`}
+            onClick={() => handleSort('price')}
+          >
+            Price {sortBy === 'price' && sortOrder === 'asc' ? '▲' : '▼'}
+          </button>
+        </div>
       </div>
       {/* affiche sur une ligne le nom du produit et son prix */}
       <div>
@@ -109,19 +168,6 @@ const Home = () => {
           ))
         }
       </div>
-      {/* Si on le desire, on affiche ou encore on met a jour la liste des produits affiches */}
-      {/* <List>
-        {
-          filteredProducts.map(prod => (
-            <Item 
-              key={prod.id} 
-              product = {prod} 
-              favorite={favorites.includes(prod.id)}
-              onFavorite={handleFavorite}
-            />
-          ))
-        }
-      </List> */}
     </div>
   )
 }

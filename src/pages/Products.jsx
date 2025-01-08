@@ -68,6 +68,15 @@ const Products = () => {
 
       <List className="products-list grid grid-cols-3 gap-4 sm:grid-cols-1">
         {
+          filteredProducts.length ? filteredProducts.map(prod => ( 
+            <Item 
+              className="product-card"
+              key={prod.id} 
+              product = {prod} 
+              favorite={favorites.includes(prod.id)}
+              onFavorite={handleFavorite}
+            />
+          )) :
           products.map(prod => (
             <Item 
               className="product-card"

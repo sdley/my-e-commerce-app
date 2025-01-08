@@ -61,6 +61,18 @@
       "stockCount": 1,
       "price": 1,
       "created_at": "1/7/2025"
+    },
+    {
+      "id": "3da8",
+      "title": "Smartphone 📱 ",
+      "imageSrc": "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?cs=srgb&dl=pexels-fotios-photos-1092644.jpg&fm=jpg",
+      "specification": [
+        "BEST Free Smartphone Stock",
+        "Free download"
+      ],
+      "stockCount": 19,
+      "price": 98,
+      "created_at": "1/8/2025"
     }
   ]
 }
