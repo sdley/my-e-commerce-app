@@ -1,0 +1,66 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "imageSrc": "https://firebasestorage.googleapis.com/v0/b/my-react-portfolio-database.appspot.com/o/my-e-commerce-folder%2Fiphone.png?alt=media&token=7017e6d1-43b0-4eeb-a0dc-28770e5d3a02",
+      "title": "iPhone 15 Pro",
+      "specification": [
+        "A17 Pro chip with 6-core GPU",
+        "3x or 5x Telephoto camera",
+        "Up to 29 hours video playback"
+      ],
+      "stockCount": 10,
+      "price": 999,
+      "created_at": "Tue Jan 07 2025 16:20:47"
+    },
+    {
+      "id": "2",
+      "imageSrc": "https://firebasestorage.googleapis.com/v0/b/my-react-portfolio-database.appspot.com/o/my-e-commerce-folder%2Fairpods.png?alt=media&token=62ed6b20-2373-4206-92f6-0980145ba09e",
+      "title": "AirPods Pro 2",
+      "specification": [
+        "Noise Cancellation",
+        "Dust, sweat, and water resistant",
+        "Up to 6 hours of listening"
+      ],
+      "stockCount": 0,
+      "price": 249,
+      "created_at": "Tue Jan 07 2025 16:20:47"
+    },
+    {
+      "id": "3",
+      "imageSrc": "https://firebasestorage.googleapis.com/v0/b/my-react-portfolio-database.appspot.com/o/my-e-commerce-folder%2Fapple-watch.png?alt=media&token=3d3a0b3f-2542-4699-90f1-38a928899ea2",
+      "title": "Apple Watch 9",
+      "specification": [
+        "45mm or 41mm case size",
+        "Always-On Retina display",
+        "Up to 18 hours normal use"
+      ],
+      "stockCount": 6,
+      "price": 399,
+      "created_at": "Tue Jan 07 2025 16:20:47"
+    },
+    {
+      "id": "4",
+      "imageSrc": "https://i.ebayimg.com/images/g/lbQAAOSwHxNnNMrZ/s-l1600.webp",
+      "title": "Samsung Galaxy Note 9",
+      "specification": [
+        "◆◆ Compatible with All Service providers ◆◆",
+        "Brand New · Samsung Galaxy Note9 · 128 GB"
+      ],
+      "stockCount": 29,
+      "price": 199,
+      "created_at": "Tue Jan 07 2025 16:20:47"
+    },
+    {
+      "id": "4337",
+      "title": "Toto ",
+      "imageSrc": "https://scaler.com/topics/images/short-sample-code-trim-method.webp",
+      "specification": [
+        "description hello"
+      ],
+      "stockCount": 1,
+      "price": 1,
+      "created_at": "1/7/2025"
+    }
+  ]
+}

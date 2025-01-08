@@ -83,13 +83,15 @@ export default function Item({product, onFavorite, favorite}) {
   );
 }
 
+// fonction pour afficher le status du stock
 function Status({ stockCount }){
   const notAvailableTemplate = (
     <p className='NotAvailableStatus'>Not Available</p>
   );
 
   const AvailableTemplate = (
-    <p className='AvailableStatus'>{ stockCount } items availables</p>
+    stockCount > 1  ? <p className='AvailableStatus'>{ stockCount } items availables</p>
+    : <p className='AvailableStatus'>{ stockCount } item available</p>
   );
 
   return stockCount === 0 ? notAvailableTemplate : AvailableTemplate;

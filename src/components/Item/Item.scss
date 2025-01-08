@@ -1,3 +1,4 @@
+// Container correspond a List-item
 .Container {
     position: relative;
     width: 100%;
@@ -5,6 +6,8 @@
     border-radius: 8px;
     padding: 16px;
     text-align: center;
+    flex: 0 0 calc(33.33% - 20px); // width: 33.33%; en effet nous voulons avoir 3 articles par ligne
+    // height: 100%; 
   }
 
   article{
@@ -44,5 +47,12 @@
   .descriptionItem{
     font-size: 12px;
     // font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .Container {
+      flex: 0 0 auto;
+      width: 100%;
+    }
   }
   
