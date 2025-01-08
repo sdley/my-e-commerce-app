@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Item from '../components/Item/Item';
 import List from '../components/List/List';
+import FilteredProductByPrice from '../components/filtredProductByPrice/FilteredProductByPrice';
 
 
 const Products = () => {
@@ -43,8 +44,25 @@ const Products = () => {
   const handleMaxPrice = (e) => {
     setMaxPrice(e.target.value);
   }
-  const filteredProducts = products.filter(prod => prod.price >= minPrice && prod.price <= maxPrice);
-  console.log(filteredProducts);
+  // sort products by name or price
+  const [sortBy, setSortBy] = useState('name');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const handleSort = (sortBy) => {
+    setSortBy(sortBy);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+
+  // filteres products
+  // const filteredProducts = products.filter(prod => prod.price >= minPrice && prod.price <= maxPrice);
+  const filteredProducts = products.filter(prod => prod.price >= minPrice && prod.price <= maxPrice).sort((a,
+     b) => {
+    if (sortBy === 'name') {
+      return sortOrder === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
+    } else {
+      return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+    }
+  });
   
   return (
     <div className='flex-1 pt-20 pb-8 px-6'>
@@ -88,50 +106,16 @@ const Products = () => {
           ))
         }
       </List>
-      {/* products filtered by price where user can specify the two prices */}
-      <h2 
-        className='text-2xl font-bold text-left m-4'
-        >Products filtered by price</h2>
-      <div
-        className='text-left'
-        > Price: $ 
-        <input
-          type='number' 
-          value={minPrice} onChange={handleMinPrice}
-          className="input input-bordered input-xs max-w-xs bg-white text-black" />&nbsp;
-        - $
-        <input
-          type='number' 
-          value={maxPrice} onChange={handleMaxPrice}
-          className="input input-bordered input-xs max-w-xs bg-white text-black" />
-      </div>
-      {/* affiche sur une ligne le nom du produit et son prix */}
-      <div>
-        {
-          filteredProducts.map(prod => (
-            <div
-              key={prod.id}
-              className='text-left m-2'
-              ><span className='text-l font-bold'>{prod.title}</span> - &nbsp;
-              <span className='text-l font-bold'>Cost: </span> ${prod.price}
-              <hr />
-            </div>
-          ))
-        }
-      </div>
-      {/* Si on le desire, on affiche ou encore on met a jour la liste des produits affiches */}
-      {/* <List>
-        {
-          filteredProducts.map(prod => (
-            <Item 
-              key={prod.id} 
-              product = {prod} 
-              favorite={favorites.includes(prod.id)}
-              onFavorite={handleFavorite}
-            />
-          ))
-        }
-      </List> */}
+      <FilteredProductByPrice
+        minPrice={minPrice}
+        maxPrice={maxPrice}
+        handleMinPrice={handleMinPrice}
+        handleMaxPrice={handleMaxPrice}
+        sortBy={sortBy}
+        sortOrder={sortOrder}
+        handleSort={handleSort}
+        filteredProducts={filteredProducts}
+      />
     </div>
   )
 }
